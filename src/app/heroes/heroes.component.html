@@ -1,0 +1,25 @@
+<h1>My Heroes</h1>
+<h2>Select a hero below</h2>
+<ul class="hero">
+  <!--Esse class.selected, Eh soh para verificar qual esta selecionado, para ser destacado.
+      Esse destaque acontede no CSS-->
+  <li *ngFor="let h of hero"
+    [class.selected]="h === selectHero"
+    (click)="onSelect(h)">
+    <span class="badge">{{h.id}}</span> {{h.name}}
+  </li>
+  <!--Eh por esse (click)="..." esse onSelect, eh uma funcao que eh definida no heroes.component.ts
+      Que, quando clica em algumm hero, essa funcao eh acionada, e seta o selectHero para o hero
+      que foi clicado-->
+</ul>
+
+<div *ngIf="selectHero; else elseBlock">
+  <h2>{{selectHero.name}} Details</h2>
+  <div><span>id: </span>{{selectHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectHero.name" placeholder="name"/>
+    </label>
+  </div>
+</div>
+<ng-template #elseBlock>Meanwhile the selectHero is false, undefined</ng-template>
