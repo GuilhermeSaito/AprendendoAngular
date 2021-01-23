@@ -13,13 +13,8 @@
       que foi clicado-->
 </ul>
 
-<div *ngIf="selectHero; else elseBlock">
-  <h2>{{selectHero.name}} Details</h2>
-  <div><span>id: </span>{{selectHero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectHero.name" placeholder="name"/>
-    </label>
-  </div>
-</div>
-<ng-template #elseBlock>Meanwhile the selectHero is false, undefined</ng-template>
+<!--Com o @Input() do hero-detail.ts, chamando dessa forma, eh possivel mandar a informacao do
+  selectHero, pra lah.    Fazendo uma conexao entre Parent e Child, tem o @Export() tbm,
+  Ai manda dados do child para o Parent-->
+<!--app-<nomeDoLugarCom@Input(), [nomeDaVariavelDo@Input()], ="variavelParaMandarOsDados"-->
+<app-hero-detail [hero]="selectHero"></app-hero-detail>
